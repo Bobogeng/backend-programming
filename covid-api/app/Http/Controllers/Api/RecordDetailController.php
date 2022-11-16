@@ -66,7 +66,7 @@ class RecordDetailController extends Controller
             ]);
 
             // Memanggil fungsi dari model untuk mengembalikan data berupa RecordDetails yang sesuai dengan id parameter tersebut
-            $data = $recordDetail->singleRecordDetail($recordDetail->id);
+            $data = $recordDetail->getById($recordDetail->id);
 
             // Membuat variable data berupa semua satu data dari table RecordDetails dan pesan berhasil
             $response = [
@@ -89,7 +89,7 @@ class RecordDetailController extends Controller
             // Membuat variable data berupa satu data dari table RecordDetails dan pesan berhasil
             $data = [
                 'message' => 'Get detail resource',
-                'data' => $resource->singleRecordDetail($id)
+                'data' => $resource->getById($id)
             ];
             // Merespon data dengan status code 200 atau ok
             return response()->json($data, 200);
@@ -135,7 +135,7 @@ class RecordDetailController extends Controller
                 RecordDetail::find($id)->update($request->only('status'));
     
                 // Memanggil fungsi dari model untuk mengembalikan data berupa RecordDetails yang sesuai dengan id parameter tersebut
-                $data = $resource->singleRecordDetail($id);
+                $data = $resource->getById($id);
     
                 // Membuat variable response berupa satu data dari table RecordDetails dan pesan berhasil
                 $response = [

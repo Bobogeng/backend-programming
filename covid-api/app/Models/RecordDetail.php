@@ -91,8 +91,8 @@ class RecordDetail extends Model
         ->select(['patients.*', 'record_details.status', 'records.*'])->where('record_details.status', 'like', 'dead')->get();
     }
 
-    // Fungsi singleRecordDetail bertipe public static untuk mengambil satu data berdasarkan id resource beserta foreign key
-    public function singleRecordDetail($id)
+    // Fungsi getById bertipe public static untuk mengambil satu data berdasarkan id resource beserta foreign key
+    public function getById($id)
     {
         // Membuat join table relasi
         return $this->join('patients', 'record_details.patient_id', '=', 'patients.id')
